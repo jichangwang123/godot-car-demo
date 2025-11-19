@@ -100,7 +100,7 @@ BUG! exception in phase 'semantic analysis'
 - `build.gradle` 配置了 Java 17 工具链，即使安装了 Java 21 也会正常工作
 - 如果仍有问题，可以：
   1. 安装 JDK 17 并设置 `JAVA_HOME` 环境变量
-  2. 或在 `gradle.properties` 中设置 `org.gradle.java.home=<JDK17路径>`
+  2. 或在 `gradle.properties` 中设置 `org.gradle.java.home=<JDK17路径>` (使用完整路径，不要留空)
 
 #### 问题：Gradle daemon 启动失败
 
@@ -113,6 +113,22 @@ Could not open init generic class cache
 - 清理 Gradle 缓存: `gradlew --stop` 然后删除 `~/.gradle/caches`
 - 确保使用正确的 Java 版本
 - 更新到最新的 Gradle Wrapper (已包含 8.5)
+
+#### 问题：Java home 属性无效
+
+**错误信息：**
+```
+Value '' given for org.gradle.java.home Gradle property is invalid
+```
+
+**原因：** `gradle.properties` 中的 `org.gradle.java.home` 设置为空值。
+
+**解决方案（已修复）：**
+- 已从 `gradle.properties` 移除空的 `org.gradle.java.home` 属性
+- Gradle 会自动使用 `build.gradle` 中配置的 Java 17 工具链
+- 如果需要手动指定 Java 路径，确保设置完整有效的路径，例如：
+  - Windows: `org.gradle.java.home=C\:\\Program Files\\Java\\jdk-17`
+  - Linux/Mac: `org.gradle.java.home=/usr/lib/jvm/java-17-openjdk`
 
 ## 在 Godot 中使用插件
 
