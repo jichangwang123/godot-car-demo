@@ -1,0 +1,15 @@
+.import/
+*.import
+.godot/
+*.translation
+export_presets.cfg.bak
+*.apk
+*.aab
+android/build/
+android/.gradle/
+android/plugins/car_control/build/
+android/plugins/car_control/.gradle/
+android/plugins/car_control/libs/
+*.aar
+*.so
+.DS_Store
