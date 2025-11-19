@@ -8,6 +8,11 @@
 
 ### 1. 准备工作
 
+**系统要求：**
+- JDK 17 或更高版本
+- Gradle 7.0 或更高版本（或使用 Gradle Wrapper）
+- Android SDK (API 21-34)
+
 下载 Godot Android 库：
 - 从 [Godot 官方下载页](https://godotengine.org/download/android) 下载 Android 库
 - 或者从你的 Godot 编辑器中导出 Android 构建模板
@@ -27,7 +32,7 @@ cp godot-lib.release.aar android/plugins/car_control/libs/
 1. 打开 Android Studio
 2. 选择 "Open an existing project"
 3. 打开 `android/plugins/car_control` 目录
-4. 等待 Gradle 同步完成
+4. 等待 Gradle 同步完成（会自动下载依赖）
 5. 构建项目: Build -> Make Project
 6. 生成的 AAR 文件位于 `build/outputs/aar/`
 
@@ -35,8 +40,40 @@ cp godot-lib.release.aar android/plugins/car_control/libs/
 
 ```bash
 cd android/plugins/car_control
+
+# 使用 Gradle Wrapper (推荐)
+# Windows:
+gradlew.bat assembleRelease
+
+# Linux/Mac:
 ./gradlew assembleRelease
+
+# 或使用系统 Gradle
+gradle assembleRelease
 ```
+
+**注意：** 首次构建时，Gradle 会自动下载 Android Gradle Plugin 和其他依赖，这可能需要几分钟时间。
+
+### 5. 故障排除
+
+#### 问题：找不到 Android Gradle Plugin
+
+**错误信息：**
+```
+Plugin [id: 'com.android.library'] was not found
+```
+
+**解决方案：**
+- 确保 `build.gradle` 包含 `buildscript` 部分和仓库配置
+- 确保 `settings.gradle` 包含 `pluginManagement` 配置
+- 检查网络连接，确保可以访问 Google 和 Maven 仓库
+- 如果使用代理，在 `gradle.properties` 中配置代理设置：
+  ```
+  systemProp.http.proxyHost=your.proxy.host
+  systemProp.http.proxyPort=8080
+  systemProp.https.proxyHost=your.proxy.host
+  systemProp.https.proxyPort=8080
+  ```
 
 ## 在 Godot 中使用插件
 
