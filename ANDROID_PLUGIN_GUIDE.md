@@ -9,9 +9,16 @@
 ### 1. 准备工作
 
 **系统要求：**
-- JDK 17 或更高版本
-- Gradle 7.0 或更高版本（或使用 Gradle Wrapper）
+- **JDK 17** (推荐) 或 JDK 21
+  - ⚠️ **重要**: 项目配置为使用 Java 17。如果你安装了 Java 21，Gradle 会自动使用 Java 17 工具链
+  - 检查 Java 版本: `java -version`
+- Gradle 8.5+ (已包含 Gradle Wrapper，无需单独安装)
 - Android SDK (API 21-34)
+
+**Java 版本兼容性：**
+- ✅ Java 17: 完全兼容（推荐）
+- ✅ Java 21: 兼容（Gradle 会自动降级到 Java 17）
+- ❌ Java 8-16: 不支持（Android Gradle Plugin 8.2.0 需要 Java 17+）
 
 下载 Godot Android 库：
 - 从 [Godot 官方下载页](https://godotengine.org/download/android) 下载 Android 库
@@ -74,6 +81,38 @@ Plugin [id: 'com.android.library'] was not found
   systemProp.https.proxyHost=your.proxy.host
   systemProp.https.proxyPort=8080
   ```
+
+#### 问题：Java 版本不兼容
+
+**错误信息：**
+```
+Unsupported class file major version 65
+```
+或
+```
+BUG! exception in phase 'semantic analysis'
+```
+
+**原因：** 安装了 Java 21，但 Gradle 8.0 不支持。
+
+**解决方案（已修复）：**
+- 项目已升级到 Gradle 8.5，支持 Java 17-21
+- `build.gradle` 配置了 Java 17 工具链，即使安装了 Java 21 也会正常工作
+- 如果仍有问题，可以：
+  1. 安装 JDK 17 并设置 `JAVA_HOME` 环境变量
+  2. 或在 `gradle.properties` 中设置 `org.gradle.java.home=<JDK17路径>`
+
+#### 问题：Gradle daemon 启动失败
+
+**错误信息：**
+```
+Could not open init generic class cache
+```
+
+**解决方案：**
+- 清理 Gradle 缓存: `gradlew --stop` 然后删除 `~/.gradle/caches`
+- 确保使用正确的 Java 版本
+- 更新到最新的 Gradle Wrapper (已包含 8.5)
 
 ## 在 Godot 中使用插件
 
