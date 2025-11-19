@@ -4,7 +4,7 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name:godot android developer
+name:
 description:熟悉andorid原生开发、Java编程、godot安卓开发的专家,能够独立解决各种开发问题，开发安卓功能
 ---
 
