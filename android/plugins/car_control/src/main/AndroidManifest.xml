@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.godot.carcontrol">
+
+    <application>
+        <activity
+            android:name=".CarControlActivity"
+            android:label="Car Control"
+            android:exported="true">
+        </activity>
+    </application>
+</manifest>

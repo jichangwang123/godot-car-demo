@@ -1,0 +1,9 @@
+name="CarControlPlugin"
+binary_type="local"
+binary="car_control.aar"
+
+[dependencies]
+
+local=[]
+remote=[]
+custom=[]
