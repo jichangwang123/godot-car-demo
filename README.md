@@ -1,52 +1,99 @@
-# godot-cpp template
-This repository serves as a quickstart template for GDExtension development with Godot 4.0+.
+# Godot Car Demo - Touch-Controlled Node Extension
+
+This repository provides a GDExtension for Godot 4.0+ that includes a touch-controllable 3D node system.
+
+## Features
+
+### Mover Node
+A Node3D subclass that responds to touch/swipe input for controlling 3D objects:
+- **Two Control Modes**: Rotation and Movement
+- **Touch/Swipe Controls**: Intuitive screen-based control
+- **Configurable Properties**: Speed and behavior settings
+- **Complete Documentation**: XML docs and README
+
+See [demo/README.md](./demo/README.md) for detailed usage instructions.
+
+## Quick Start
+
+### Prerequisites
+- Python 3.6+
+- SCons (`pip install scons`)
+- C++ compiler (GCC, Clang, or MSVC)
+- Godot 4.0+
+
+### Building
+
+1. Clone with submodules:
+```shell
+git clone --recursive https://github.com/jichangwang123/godot-car-demo.git
+cd godot-car-demo
+```
+
+2. Build the extension:
+```shell
+# Linux
+scons platform=linux target=template_debug
+
+# Windows
+scons platform=windows target=template_debug
+
+# macOS
+scons platform=macos target=template_debug
+```
+
+3. Open `demo/project.godot` in Godot and run!
+
+## Project Structure
+
+### Source Files
+* `src/Mover/` - Touch-controlled Mover node implementation
+* `src/example_class.*` - Example class from template
+* `src/register_types.*` - GDExtension registration
+
+### Demo Project
+* `demo/` - Complete Godot project with test scene
+* `demo/bin/` - Compiled libraries and .gdextension file
+* `demo/README.md` - Detailed usage guide
+
+### Documentation
+* `doc_classes/` - XML documentation for Godot classes
+* `SECURITY_SUMMARY.md` - Security analysis and recommendations
 
 ## Contents
 * Preconfigured source files for C++ development of the GDExtension ([src/](./src/))
-* An empty Godot project in [demo/](./demo), to test the GDExtension
+* A working Godot demo project in [demo/](./demo) to test the GDExtension
 * godot-cpp as a submodule (`godot-cpp/`)
-* GitHub Issues template ([.github/ISSUE_TEMPLATE.yml](./.github/ISSUE_TEMPLATE.yml))
-* GitHub CI/CD workflows to publish your library packages when creating a release ([.github/workflows/builds.yml](./.github/workflows/builds.yml))
-* An SConstruct file with various functions, such as boilerplate for [Adding documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/cpp/gdextension_docs_system.html)
+* Mover node - touch-controllable 3D node
+* Complete documentation and examples
 
-## Usage - Template
-
-To use this template, log in to GitHub and click the green "Use this template" button at the top of the repository page. This will let you create a copy of this repository with a clean git history.
-
-To get started with your new GDExtension, do the following:
-
-* clone your repository to your local computer
-* initialize the godot-cpp git submodule via `git submodule update --init`
-* change the name of the compiled library file inside the [SConstruct](./SConstruct) file by modifying the `libname` string.
-  * change the paths of the to be loaded library name inside the [demo/bin/example.gdextension](./demo/bin/example.gdextension) file, by replacing `EXTENSION-NAME` with the name you chose for `libname`.
-* change the `entry_symbol` string inside [demo/bin/example.gdextension](./demo/bin/example.gdextension) file.
-  * rename the `example_library_init` function in [src/register_types.cpp](./src/register_types.cpp) to the same name you chose for `entry_symbol`.
-* change the name of the `demo/bin/example.gdextension` file
-
-Now, you can build the project with the following command:
-
-```shell
-scons
-```
-
-If the build command worked, you can test it with the [demo](./demo) project. Import it into Godot, open it, and launch the main scene. You should see it print the following line in the console:
-
-```
-Type: 24
-```
+## Development
 
 ### Configuring an IDE
-You can develop your own extension with any text editor and by invoking scons on the command line, but if you want to work with an IDE (Integrated Development Environment), you can use a compilation database file called `compile_commands.json`. Most IDEs should automatically identify this file, and self-configure appropriately.
-To generate the database file, you can run one of the following commands in the project root directory:
+Generate a compilation database for IDE support:
 ```shell
-# Generate compile_commands.json while compiling
 scons compiledb=yes
-
-# Generate compile_commands.json without compiling
-scons compiledb=yes compile_commands.json
 ```
 
-## Usage - Actions
+### Adding Features
+1. Create new class files in `src/`
+2. Register in `src/register_types.cpp`
+3. Add to build files (`SConstruct`, `CMakeLists.txt`)
+4. Document in `doc_classes/`
 
-This repository comes with a GitHub action that builds the GDExtension for cross-platform use. It triggers automatically for each pushed change. You can find and edit it in [builds.yml](.github/workflows/builds.yml).
-After a workflow run is complete, you can find the file `godot-cpp-template.zip` on the `Actions` tab on GitHub.
+## CI/CD
+
+This repository includes GitHub Actions workflows for cross-platform builds. Check the Actions tab for automated build artifacts.
+
+## License
+
+MIT License - See LICENSE.md for details.
+
+## Using as a Template
+
+You can use this as a template for your own GDExtension projects:
+1. Click "Use this template" on GitHub
+2. Modify the library name in `SConstruct`
+3. Update the `.gdextension` file
+4. Implement your own nodes and classes
+
+For more template usage details, see the original godot-cpp-template documentation.
