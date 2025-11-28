@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Godot Car Demo"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+run/main_scene="uid://dh0oj81pufivs"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
@@ -24,3 +25,4 @@ window/stretch/mode="canvas_items"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
