@@ -29,12 +29,12 @@ git clone --recursive https://github.com/jichangwang123/godot-car-demo.git
 cd godot-car-demo
 ```
 
-2. Build the extension:
+2. Build the extension for your platform (required before running):
 ```shell
 # Linux
 scons platform=linux target=template_debug
 
-# Windows
+# Windows (requires MSVC or MinGW)
 scons platform=windows target=template_debug
 
 # macOS
@@ -42,6 +42,8 @@ scons platform=macos target=template_debug
 ```
 
 3. Open `demo/project.godot` in Godot and run!
+
+**Important**: You must build the extension before opening the project in Godot, or you'll get "GDExtension dynamic library not found" errors.
 
 ## Project Structure
 

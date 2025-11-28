@@ -156,6 +156,51 @@ scons platform=linux target=template_debug
 
 Use Godot's built-in debugger and the `UtilityFunctions::print()` calls in the code.
 
+## Troubleshooting
+
+### Error: "GDExtension dynamic library not found"
+
+If you see an error like:
+```
+ERROR: GDExtension dynamic library not found: 'res://bin/mover.gdextension'.
+```
+
+**Solution**: You need to build the extension for your platform first.
+
+1. Make sure you have initialized the godot-cpp submodule:
+   ```bash
+   git submodule update --init --recursive
+   ```
+
+2. Build the extension for your platform:
+   ```bash
+   # On Windows (requires MSVC or MinGW)
+   scons platform=windows target=template_debug
+   
+   # On Linux
+   scons platform=linux target=template_debug
+   
+   # On macOS
+   scons platform=macos target=template_debug
+   ```
+
+3. After building, the library will be copied to `demo/bin/<platform>/`
+4. Restart Godot and reload the project
+
+**Note**: The `entry_symbol` in the `.gdextension` file is correct and doesn't need to be changed.
+
+### Missing Libraries After Clone
+
+The `demo/bin/<platform>/` directories only contain `.gitkeep` files by default. You **must** build the extension for your platform before running the demo project in Godot.
+
+### Build Errors
+
+If you encounter build errors:
+- Make sure you have the required compiler installed (MSVC on Windows, GCC/Clang on Linux/macOS)
+- Install SCons: `pip install scons`
+- Make sure godot-cpp submodule is initialized
+- Check that Python 3.6+ is installed
+
 ## License
 
 This project uses the MIT License. See LICENSE.md for details.
