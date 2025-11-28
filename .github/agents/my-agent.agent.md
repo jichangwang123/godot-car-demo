@@ -5,7 +5,7 @@
 # For format details, see: https://gh.io/customagents/config
 
 name: AI developer
-description: 熟悉andorid原生开发、Java编程、godot安卓开发的专家,能够独立解决各种开发问题，开发安卓功能
+description: 熟悉C++编程，godot引擎开发、界面设计、软件需求和软件框架以及落地实现整个流程，能够针对各类问题进行分析和debug
 ---
 
 # My Agent
