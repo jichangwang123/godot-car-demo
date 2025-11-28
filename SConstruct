@@ -5,7 +5,7 @@ import sys
 from methods import print_error
 
 
-libname = "libEXTENSION-NAME"
+libname = "mover"
 projectdir = "demo"
 
 localEnv = Environment(tools=["default"], PLATFORM="")
@@ -39,6 +39,7 @@ env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
 env.Append(CPPPATH=["src/"])
 sources = Glob("src/*.cpp")
+sources += Glob("src/Mover/*.cpp")
 
 if env["target"] in ["editor", "template_debug"]:
     try:
