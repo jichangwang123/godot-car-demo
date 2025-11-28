@@ -1,0 +1,8 @@
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/CMakeFiles/mover.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/CMakeFiles/generate_doc_source.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/CMakeFiles/edit_cache.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/CMakeFiles/rebuild_cache.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/godot-cpp/CMakeFiles/generate_bindings.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/godot-cpp/CMakeFiles/godot-cpp.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/godot-cpp/CMakeFiles/edit_cache.dir
+/home/runner/work/godot-car-demo/godot-car-demo/_codeql_build_dir/godot-cpp/CMakeFiles/rebuild_cache.dir
